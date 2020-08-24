@@ -3,6 +3,62 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Restaurant from "./dynizRestos";
 
 class PicksForYou extends Component {
+  state = {
+    restaurants: [
+      {
+        image: require("../images/restaurantImages/resto8.jpg"),
+        rate: 4,
+        name: "resto1",
+        location: "kamothe",
+      },
+      {
+        image: require("../images/restaurantImages/resto7.jpg"),
+        rate: 4.7,
+        name: "resto2",
+        location: "new panel",
+      },
+      {
+        image: require("../images/restaurantImages/resto5.jpg"),
+        rate: 3.9,
+        name: "resto3",
+        location: "nerul",
+      },
+      {
+        image: require("../images/restaurantImages/resto4.jpg"),
+        rate: 3.3,
+        name: "resto4",
+        location: "belapur",
+      },
+      {
+        image: require("../images/restaurantImages/resto1.jpg"),
+        rate: 3.9,
+        name: "resto5",
+        location: "juinagar",
+      },
+      {
+        image: require("../images/restaurantImages/resto6.jpg"),
+        rate: 4.8,
+        name: "resto6",
+        location: "kamothe",
+      },
+      {
+        image: require("../images/restaurantImages/resto7.jpg"),
+        rate: 4.8,
+        name: "resto7",
+        location: "panvel",
+      },
+    ],
+  };
+  renderRestaurant() {
+    return this.state.restaurants.map((restaurant) => (
+      <Restaurant
+        image={restaurant.image}
+        rate={restaurant.rate}
+        name={restaurant.name}
+        location={restaurant.location}
+      />
+    ));
+  }
   render() {
     return (
       <View style={{ marginVertical: 15 }}>
@@ -12,43 +68,7 @@ class PicksForYou extends Component {
         </View>
         <View>
           <ScrollView horizontal>
-            <View style={styles.restoStyle}>
-              <Restaurant
-                image={require("../images/restaurantImages/resto8.jpg")}
-                name="resto1"
-                location="kamothe"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto7.jpg")}
-                name="resto2"
-                location="panvel"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto5.jpg")}
-                name="resto3"
-                location="kharghar"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto4.jpg")}
-                name="resto4"
-                location="juinagar"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto1.jpg")}
-                name="resto5"
-                location="kamothe"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto6.jpg")}
-                name="resto6"
-                location="nerul"
-              />
-              <Restaurant
-                image={require("../images/restaurantImages/resto7.jpg")}
-                name="resto7"
-                location="new panvel"
-              />
-            </View>
+            <View style={styles.restoStyle}>{this.renderRestaurant()}</View>
           </ScrollView>
         </View>
       </View>

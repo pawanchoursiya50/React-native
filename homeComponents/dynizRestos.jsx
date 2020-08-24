@@ -1,8 +1,19 @@
 import React, { Component } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 class Restaurant extends Component {
   state = {};
+  giveRating() {
+    if (this.props.rate) {
+      return (
+        <View style={styles.rating}>
+          <Text style={{ fontSize: 15 }}>{this.props.rate}</Text>
+          <MaterialCommunityIcons name="star" color={"darkGray"} size={18} />
+        </View>
+      );
+    }
+  }
   render() {
     return (
       <React.Fragment>
@@ -11,7 +22,17 @@ class Restaurant extends Component {
             source={this.props.image}
             style={{ width: 155, height: 150, resizeMode: "stretch" }}
           />
+
           <View style={styles.aboutResto}>
+            {this.giveRating()}
+            {/* <View style={styles.rating}>
+              <Text style={{ fontSize: 15 }}>{this.props.rate}</Text>
+              <MaterialCommunityIcons
+                name="star"
+                color={"darkGray"}
+                size={18}
+              />
+            </View> */}
             <Text style={styles.name}>{this.props.name}</Text>
             <Text style={styles.location}>{this.props.location}</Text>
           </View>
@@ -40,6 +61,14 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
 
+  rating: {
+    flexDirection: "row",
+    backgroundColor: "white",
+    position: "absolute",
+    top: -20,
+    opacity: 0.85,
+  },
+
   aboutResto: {
     paddingTop: 10,
     paddingHorizontal: 10,
@@ -51,6 +80,7 @@ const styles = StyleSheet.create({
   name: {
     // fontWeight: "bold",
     fontSize: 18,
+    paddingBottom: 5,
   },
 
   location: {

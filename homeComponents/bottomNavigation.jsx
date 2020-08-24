@@ -1,6 +1,5 @@
 import "react-native-gesture-handler";
 
-// import * as React from "react";
 import React, { Component } from "react";
 import { Button, View, Text, TouchableOpacity, Image } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
